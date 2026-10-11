@@ -10,7 +10,7 @@ The kit is a set of instructions your AI coding agent follows. It interviews you
 - **Two ways to run it.** As a skill with one command, or by asking any agent to read one file.
 - **Not tied to one methodology.** It has built-in checks for workspaces that use ICM (Interpretable Context Methodology), and it works with any other folder layout.
 
-> **Status: a starting point, provided as is.** The kit has been designed carefully but not yet tested widely across tools and operating systems. In particular, the Phase 2 monitor scripts have not yet been verified on every platform. **This repository is not actively maintained**: issues and pull requests may not get a response. Review the kit and scripts before you use them, and fork the repository to adapt it to your needs; see [Adapting and contributing](#adapting-and-contributing).
+> **Status: a starting point, provided as is.** The kit has been designed carefully but not yet tested widely across tools and operating systems. In particular, the Phase 2 monitor scripts have not yet been verified on every platform. **This repository is archived and not maintained**: it is read-only, so it does not accept issues or pull requests. You can still download, clone, and use it freely. Review the kit and scripts before you use them, and fork the repository if you want to adapt it; see [Adapting the kit](#adapting-the-kit).
 
 ---
 
@@ -26,7 +26,7 @@ The kit is a set of instructions your AI coding agent follows. It interviews you
 - [The Phase 2 monitor](#the-phase-2-monitor)
 - [Troubleshooting and FAQ](#troubleshooting-and-faq)
 - [Known limitations](#known-limitations)
-- [Adapting and contributing](#adapting-and-contributing)
+- [Adapting the kit](#adapting-the-kit)
 - [License](#license)
 
 ---
@@ -273,19 +273,20 @@ Yes. Delete the `workspace-diagnostics` folder in your home folder, or just the 
 
 ---
 
-## Adapting and contributing
+## Adapting the kit
 
-This repository is a starting point and is not actively maintained. The best way to improve the kit is to **fork it** and adapt it for your own needs or your team's. Pull requests and issues are welcome, but may never be reviewed or answered.
+This repository is archived: it is a read-only starting point and does not accept issues or pull requests. To improve the kit, **fork it** (or download it) and adapt it for your own needs or your team's. If you publish your version, others can benefit from it.
 
-The guidance below is for anyone adapting the kit, so that forks stay safe, consistent, and useful.
+The guidance below is for anyone adapting the kit, so that adapted versions stay safe, consistent, and useful.
 
-### Ways to help
+### Worthwhile improvements
 
-- **Test reports.** Run the kit, and open an issue describing your setup and what happened, so others can see what works. Do not paste raw reports, recordings, file paths, or names you consider private; ask the agent for a shareable version, and read it before posting.
-- **Monitor testing.** Run the monitor scripts on your OS version and report whether the readings look right. This is the most needed help right now.
+- **Monitor testing.** Run the monitor scripts on your OS version and check that the readings look right. This is the part most in need of testing.
 - **Tool coverage.** Add or correct instruction file names, ignore files, and skills folders for AI tools.
 - **Methodology modules.** Add checks for other workspace methodologies alongside ICM.
 - **Wording.** Make instructions clearer or plainer.
+
+If you share test results or reports from your own use, do not include raw reports, recordings, file paths, or names you consider private. Ask the agent for a shareable version, and read it before posting.
 
 ### Repository layout
 
@@ -350,7 +351,7 @@ Please keep changes consistent with these. They are what make the kit trustworth
 - The shell script must keep LF line endings. `.gitattributes` enforces this; do not override it.
 - Update Appendix C and the README if you change outputs, options, or limits.
 
-**Manual test checklist** (please include your results in the pull request):
+**Manual test checklist** (record your results with your changes):
 
 1. Run for 3 to 5 minutes against a small test folder, with an output folder outside it.
 2. While it runs, add, edit, and delete a few files in the test folder, and add one marker.
@@ -370,24 +371,19 @@ Please keep changes consistent with these. They are what make the kit trustworth
 
 ### Testing changes to the kit
 
-There is no automated test suite; the kit is instructions, so testing means running it. Before opening a pull request that changes the kit:
+There is no automated test suite; the kit is instructions, so testing means running it. Before relying on a changed version of the kit:
 
 1. Run Phase 1 in at least one AI tool against a real or test workspace, starting it both ways (skill and "read the file") if your change affects start-up.
 2. Check that the agent still asks before every command, never offers to apply fixes, and explains things plainly.
-3. Mention which tool, model, and OS you tested with.
+3. Note which tool, model, and OS you tested with.
 
-### Sharing changes back
+### Publishing your version
 
-Pull requests may not be reviewed or merged. If you still want to offer one:
-
-1. Fork the repository and create a branch for your change.
-2. Keep each pull request focused on one change.
-3. Describe what you changed, why, and how you tested it.
-4. By contributing, you agree that your contribution is licensed under the MIT license.
+The MIT license lets you change and share the kit, as long as you keep the copyright and license notice. If you publish an adapted version, say what you changed and how you tested it, and keep `SECURITY.md` accurate for your version.
 
 ### If you find a security or privacy problem
 
-If you find a way the kit could lead an agent to change or delete files, expose secrets or personal data, or act without the user's approval, fix it in your copy and consider sharing the fix. You can open a public issue to warn others, described in general terms and without step-by-step instructions for misuse. See [SECURITY.md](SECURITY.md).
+If you find a way the kit could lead an agent to change or delete files, expose secrets or personal data, or act without the user's approval, fix it in your copy and consider publishing the fix. See [SECURITY.md](SECURITY.md).
 
 ## License
 

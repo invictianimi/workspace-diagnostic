@@ -2,15 +2,13 @@
 
 The Workspace Diagnostic Kit is used inside people's working folders, often with an AI agent that can run commands. This page describes the protections built into the kit, what to look out for if you adapt it, and what to do if you find a problem.
 
-**This project is provided as is, as a starting point, and is not actively maintained.** Nobody monitors it for reports, and there is no private reporting channel. You are responsible for reviewing the kit and the scripts before you use them, and for any copy you adapt.
+**This project is provided as is, as a starting point. The repository is archived and not maintained.** It is read-only, nobody monitors it, and there is no way to report problems to it. You are responsible for reviewing the kit and the scripts before you use them, and for any copy you adapt.
 
 ## If you find a problem
 
-- **Fix it in your own copy.** Fork the repository, fix the problem, and consider sharing your fork so others can benefit.
-- **Warn other users if it helps.** You can open a public issue so that others who find this repository can see the problem and a fix or workaround. Describe it in general terms, and do not include step-by-step instructions for misusing it.
+- **Fix it in your own copy.** Fork or download the repository, fix the problem, and consider publishing your fixed version so others can benefit.
+- **If you write about it publicly,** describe the problem in general terms, without step-by-step instructions for misusing it.
 - **Never share private data.** Do not include real file names, paths, secrets, or other personal data from your own system. Use made-up examples.
-
-Do not expect a response to issues or pull requests.
 
 ## What to look out for
 
