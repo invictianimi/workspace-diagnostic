@@ -1,26 +1,18 @@
 # Security and privacy policy
 
-The Workspace Diagnostic Kit is used inside people's working folders, often with an AI agent that can run commands. Problems that could lead to data being changed, exposed, or sent somewhere unexpected are treated as the highest priority.
+The Workspace Diagnostic Kit is used inside people's working folders, often with an AI agent that can run commands. This page describes the protections built into the kit, what to look out for if you adapt it, and what to do if you find a problem.
 
-## Reporting a vulnerability
+**This project is provided as is, as a starting point, and is not actively maintained.** Nobody monitors it for reports, and there is no private reporting channel. You are responsible for reviewing the kit and the scripts before you use them, and for any copy you adapt.
 
-**Please do not post the details of a security problem in a public issue.**
+## If you find a problem
 
-Instead, open a new issue titled **"Security concern"** that says only that you have found a possible security or privacy problem, without describing it. The maintainer will reply there to arrange a private way to share the details.
+- **Fix it in your own copy.** Fork the repository, fix the problem, and consider sharing your fork so others can benefit.
+- **Warn other users if it helps.** You can open a public issue so that others who find this repository can see the problem and a fix or workaround. Describe it in general terms, and do not include step-by-step instructions for misusing it.
+- **Never share private data.** Do not include real file names, paths, secrets, or other personal data from your own system. Use made-up examples.
 
-If the problem is minor and describing it publicly would not put anyone at risk (for example, a wording issue in the kit's privacy rules), you can describe it in the issue directly.
+Do not expect a response to issues or pull requests.
 
-When you share the details, please include:
-
-- what the problem is, and what could happen as a result
-- the steps or conditions that trigger it, described in general terms
-- the AI tool, model, and operating system involved, if relevant
-
-Please do not include real file names, paths, secrets, or other personal data from your own system. Use made-up examples.
-
-Reports are acknowledged as soon as possible, fixes are released as soon as practical, and reporters are credited unless they ask not to be.
-
-## What counts as a security or privacy problem
+## What to look out for
 
 - The kit leading an agent to create, change, move, or delete files, or change settings, without the user's explicit approval
 - The kit leading an agent to open or send secrets (passwords, keys, tokens) or personal data that the rules say it should not
@@ -39,6 +31,6 @@ Reports are acknowledged as soon as possible, fixes are released as soon as prac
 
 ## Getting the kit safely
 
-- Download it only from the official repository: https://github.com/invictianimi/workspace-diagnostic
-- The monitor scripts are short and readable. Read them before running them, especially if you got the kit from anywhere else.
+- Download it from the original repository (https://github.com/invictianimi/workspace-diagnostic) or from a fork you trust.
+- The monitor scripts are short and readable. Read them before running them, especially if you got the kit from a fork or anywhere else.
 - The skill does not pre-approve any tools (`allowed-tools` is not set in `SKILL.md`), so your AI tool still asks before each command.

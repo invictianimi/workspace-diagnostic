@@ -10,7 +10,7 @@ The kit is a set of instructions your AI coding agent follows. It interviews you
 - **Two ways to run it.** As a skill with one command, or by asking any agent to read one file.
 - **Not tied to one methodology.** It has built-in checks for workspaces that use ICM (Interpretable Context Methodology), and it works with any other folder layout.
 
-> **Status: early release.** The kit has been designed carefully but not yet tested widely across tools and operating systems. In particular, the Phase 2 monitor scripts have not yet been verified on every platform. Reports from real use are very welcome; see [Contributing](#contributing).
+> **Status: a starting point, provided as is.** The kit has been designed carefully but not yet tested widely across tools and operating systems. In particular, the Phase 2 monitor scripts have not yet been verified on every platform. **This repository is not actively maintained**: issues and pull requests may not get a response. Review the kit and scripts before you use them, and fork the repository to adapt it to your needs; see [Adapting and contributing](#adapting-and-contributing).
 
 ---
 
@@ -26,7 +26,7 @@ The kit is a set of instructions your AI coding agent follows. It interviews you
 - [The Phase 2 monitor](#the-phase-2-monitor)
 - [Troubleshooting and FAQ](#troubleshooting-and-faq)
 - [Known limitations](#known-limitations)
-- [Contributing](#contributing)
+- [Adapting and contributing](#adapting-and-contributing)
 - [License](#license)
 
 ---
@@ -72,7 +72,7 @@ git clone https://github.com/invictianimi/workspace-diagnostic.git
 
 Keep the `workspace-diagnostic` folder together. The kit file, `SKILL.md`, and the `scripts` folder belong together.
 
-Get the kit only from this repository. If you got a copy anywhere else, compare it with this one, and read the two short monitor scripts before running them.
+Get the kit from this repository or from a fork you trust, and read the two short monitor scripts before running them.
 
 ### Option 1: As a skill
 
@@ -273,13 +273,15 @@ Yes. Delete the `workspace-diagnostics` folder in your home folder, or just the 
 
 ---
 
-## Contributing
+## Adapting and contributing
 
-Contributions are welcome, especially reports from real use: which tool and model you used, on which operating system, what worked, and what did not.
+This repository is a starting point and is not actively maintained. The best way to improve the kit is to **fork it** and adapt it for your own needs or your team's. Pull requests and issues are welcome, but may never be reviewed or answered.
+
+The guidance below is for anyone adapting the kit, so that forks stay safe, consistent, and useful.
 
 ### Ways to help
 
-- **Test reports.** Run the kit, and open an issue describing your setup and what happened. Do not paste raw reports, recordings, file paths, or names you consider private; ask the agent for a shareable version, and read it before posting.
+- **Test reports.** Run the kit, and open an issue describing your setup and what happened, so others can see what works. Do not paste raw reports, recordings, file paths, or names you consider private; ask the agent for a shareable version, and read it before posting.
 - **Monitor testing.** Run the monitor scripts on your OS version and report whether the readings look right. This is the most needed help right now.
 - **Tool coverage.** Add or correct instruction file names, ignore files, and skills folders for AI tools.
 - **Methodology modules.** Add checks for other workspace methodologies alongside ICM.
@@ -292,7 +294,7 @@ workspace-diagnostic/
 ├── SKILL.md                      Skill entry point (Agent Skills format). Short; points to the kit.
 ├── workspace-diagnostic-kit.md   The kit: all instructions the agent follows. Usable on its own.
 ├── README.md                     This file.
-├── SECURITY.md                   How to report security problems; protections in place.
+├── SECURITY.md                   Built-in protections, and what to do if you find a problem.
 ├── LICENSE                       MIT license.
 ├── .gitattributes                Keeps the shell script's line endings correct.
 ├── .gitignore                    Stops recordings and reports from being committed by accident.
@@ -374,16 +376,18 @@ There is no automated test suite; the kit is instructions, so testing means runn
 2. Check that the agent still asks before every command, never offers to apply fixes, and explains things plainly.
 3. Mention which tool, model, and OS you tested with.
 
-### Pull requests
+### Sharing changes back
+
+Pull requests may not be reviewed or merged. If you still want to offer one:
 
 1. Fork the repository and create a branch for your change.
 2. Keep each pull request focused on one change.
 3. Describe what you changed, why, and how you tested it.
 4. By contributing, you agree that your contribution is licensed under the MIT license.
 
-### Reporting a security or privacy problem
+### If you find a security or privacy problem
 
-If you find a way the kit could lead an agent to change or delete files, expose secrets or personal data, or act without the user's approval, **do not post the details publicly**. Open an issue titled "Security concern" without details, and the maintainer will arrange a private way to share them, as described in [SECURITY.md](SECURITY.md). These are treated as the highest priority.
+If you find a way the kit could lead an agent to change or delete files, expose secrets or personal data, or act without the user's approval, fix it in your copy and consider sharing the fix. You can open a public issue to warn others, described in general terms and without step-by-step instructions for misuse. See [SECURITY.md](SECURITY.md).
 
 ## License
 
