@@ -292,7 +292,7 @@ workspace-diagnostic/
 ├── SKILL.md                      Skill entry point (Agent Skills format). Short; points to the kit.
 ├── workspace-diagnostic-kit.md   The kit: all instructions the agent follows. Usable on its own.
 ├── README.md                     This file.
-├── SECURITY.md                   How to report security problems privately; protections in place.
+├── SECURITY.md                   How to report security problems; protections in place.
 ├── LICENSE                       MIT license.
 ├── .gitattributes                Keeps the shell script's line endings correct.
 ├── .gitignore                    Stops recordings and reports from being committed by accident.
@@ -383,7 +383,7 @@ There is no automated test suite; the kit is instructions, so testing means runn
 
 ### Reporting a security or privacy problem
 
-If you find a way the kit could lead an agent to change or delete files, expose secrets or personal data, or act without the user's approval, **do not open a public issue**. Report it privately as described in [SECURITY.md](SECURITY.md). These are treated as the highest priority.
+If you find a way the kit could lead an agent to change or delete files, expose secrets or personal data, or act without the user's approval, **do not post the details publicly**. Open an issue titled "Security concern" without details, and the maintainer will arrange a private way to share them, as described in [SECURITY.md](SECURITY.md). These are treated as the highest priority.
 
 ## License
 

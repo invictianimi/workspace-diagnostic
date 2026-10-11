@@ -4,11 +4,13 @@ The Workspace Diagnostic Kit is used inside people's working folders, often with
 
 ## Reporting a vulnerability
 
-**Please do not report security problems in public issues.**
+**Please do not post the details of a security problem in a public issue.**
 
-Report them privately through GitHub: go to the repository's **Security** tab and choose **Report a vulnerability**. This opens a private advisory that only the maintainers can see.
+Instead, open a new issue titled **"Security concern"** that says only that you have found a possible security or privacy problem, without describing it. The maintainer will reply there to arrange a private way to share the details.
 
-Please include:
+If the problem is minor and describing it publicly would not put anyone at risk (for example, a wording issue in the kit's privacy rules), you can describe it in the issue directly.
+
+When you share the details, please include:
 
 - what the problem is, and what could happen as a result
 - the steps or conditions that trigger it, described in general terms
