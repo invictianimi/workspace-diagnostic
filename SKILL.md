@@ -3,7 +3,7 @@ name: workspace-diagnostic
 description: Guided, read-only diagnosis of why a local workspace has become slow to work in with an AI agent (slow replies, long start-up, heavy searching, sessions filling up, editor or computer lag). Interviews the user, measures the workspace, optionally records activity while they work, and explains findings in plain language with step-by-step fixes the user applies themselves. Use when the user asks to run the workspace diagnostic or diagnostic kit, or says their workspace, agent, or sessions have become slow. Never changes files to fix anything.
 compatibility: Works with any agent that supports Agent Skills and can run shell commands with user approval; can also guide a user who runs commands themselves. Windows (PowerShell 5.1+), Linux, or macOS.
 metadata:
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Workspace Diagnostic

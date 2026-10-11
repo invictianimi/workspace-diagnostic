@@ -72,6 +72,8 @@ git clone https://github.com/invictianimi/workspace-diagnostic.git
 
 Keep the `workspace-diagnostic` folder together. The kit file, `SKILL.md`, and the `scripts` folder belong together.
 
+Get the kit only from this repository. If you got a copy anywhere else, compare it with this one, and read the two short monitor scripts before running them.
+
 ### Option 1: As a skill
 
 Most current AI coding tools support the open [Agent Skills](https://agentskills.io) format. Installing the kit as a skill lets you start it with one command.
@@ -154,11 +156,28 @@ If your home folder is synced to the cloud, the agent suggests another place. Yo
 
 **What it may write, with your permission.** A records folder outside the workspace, reports saved into it, and the Phase 2 recording. Each needs your yes, then a second confirmation. Your tool's own permission prompt is separate.
 
-**What it reads.** File names, sizes, counts, and dates across the workspace. It opens the contents only of agent instruction files (such as `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.cursor/rules`), routing files, ignore files, and agent or editor settings. It avoids files that look like secrets (`.env`, keys, credentials, tokens) and does not repeat any secret-looking value it sees.
+**What it reads.** File names, sizes, counts, and dates across the workspace. It opens the contents only of agent instruction files (such as `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.cursor/rules`), routing files, ignore files, and agent or editor settings. Settings files are read for their structure only, with values such as API keys hidden.
+
+**How it protects private information.**
+
+- It never opens files that usually hold secrets: `.env` files, keys and certificates, SSH keys, password databases, cloud credentials, and files named like `secret`, `credential`, `token`, or `password`.
+- If it comes across a secret in a file your agent reads, it never repeats or saves it. It tells you which file (not the secret) and recommends moving the secret out and replacing it, since anything in those files is sent to your AI provider.
+- It shows folders rather than individual file names wherever that answers the question, and keeps lists of file names short.
+- Reports use paths relative to the workspace, write your home folder as `~`, and leave out your account name and personal details such as people's names, client names, or email addresses.
+- Folders you call off limits are left out of every check and of the recording.
+- It does not read git history or git settings, which contain names, email addresses, and sometimes passwords in remote addresses.
+- Timed searches use a made-up search term and never print lines from your files.
+- It does not ask for personal information, and keeps anything sensitive you mention out of saved reports.
+
+**Private mode.** If your workspace holds confidential, client, health, financial, legal, or other regulated information, or your organization has rules about AI tools, tell the agent. It suggests checking those rules and your AI provider's data settings first, then works more strictly: it opens no file contents without asking for each file, reports folder-level figures only, and sets the monitor to record folders, not file names.
 
 **It treats your workspace files as material to inspect, not instructions to follow.** This matters because AI workspaces are full of prompts and agent instructions.
 
-**What leaves your computer.** Like any session with a cloud AI service, file names, folder layout, the contents of the files the agent reads, and any recording summaries it reads are sent to your AI provider. Recordings stay on your computer until the agent reads them, and they contain program names and file names, not file contents.
+**What leaves your computer.** Like any session with a cloud AI service, file names, folder layout, the contents of the files the agent reads, and any recording summaries it reads are sent to your AI provider. Recordings stay on your computer until the agent reads them, and they contain program names and file names (or only folder names, if you choose), never file contents. If you use an AI provider through work, check whether your organization allows workspace data to be sent to it.
+
+**Saved files.** The records folder and recordings are created so that only you can read them, outside the workspace and outside cloud-sync folders. The agent tells you what is stored and how to delete it.
+
+**Sharing results.** If you want to share a report, for example in a GitHub issue or with your IT department, ask the agent for a shareable version with names replaced by placeholders, and read it before sharing. Share summaries rather than raw recordings, which contain file paths.
 
 **Effects on your system.**
 
@@ -186,6 +205,15 @@ The agent proposes the settings, explains what the monitor will create, and give
 
 **What it does not do:** it never reads what is inside your files, never connects to the network, and writes only inside its own recording folder. It refuses to run if that folder is inside your workspace.
 
+**Privacy safeguards:**
+
+- The recording folder is made readable only by you.
+- Only program names are recorded, never their command lines, which can contain private details.
+- Optionally, it records only the first few folder levels of each changed file (for example `outputs/run-12/*`), so no file names are stored. The agent recommends this in private mode.
+- The full list of files is kept in memory (Windows) or in a temporary file that is deleted at the end (macOS and Linux). It is only kept if you ask.
+- Values in the CSV files are protected so that spreadsheet programs such as Excel do not run them as formulas.
+- Keep the notes you type when marking slow moments free of personal details, and delete the recording folder when you no longer need it.
+
 **Marking slow moments.** While you work, run a one-line command (the agent gives it to you, filled in) whenever something feels slow, with a short note such as "agent stalled before first reply". The analysis lines these up with what the computer was doing at that moment.
 
 **Stopping.** It stops on its own when the time is up or if the recording grows past a size limit (50 MB by default). To stop early, press Ctrl+C in its window, or create a file named `STOP` in the recording folder.
@@ -200,7 +228,7 @@ The agent proposes the settings, explains what the monitor will create, and give
 | `scan.csv` | File count, total size, and how long each file listing took |
 | `changes.csv` | Files added, changed, or removed between listings |
 | `markers.csv` | The slow moments you marked |
-| `snapshot-end.tsv` | The full file list at the end |
+| `snapshot-end.tsv` | The full file list at the end, only if you ask for it |
 
 On Windows, the start command uses `-ExecutionPolicy Bypass`, which lets that single PowerShell window run a script saved on your computer. It does not change any system setting. On macOS, putting `caffeinate -i` in front of the command stops the computer from sleeping during the recording.
 
@@ -251,7 +279,7 @@ Contributions are welcome, especially reports from real use: which tool and mode
 
 ### Ways to help
 
-- **Test reports.** Run the kit, and open an issue describing your setup and what happened. Please do not paste file paths or names you consider private.
+- **Test reports.** Run the kit, and open an issue describing your setup and what happened. Do not paste raw reports, recordings, file paths, or names you consider private; ask the agent for a shareable version, and read it before posting.
 - **Monitor testing.** Run the monitor scripts on your OS version and report whether the readings look right. This is the most needed help right now.
 - **Tool coverage.** Add or correct instruction file names, ignore files, and skills folders for AI tools.
 - **Methodology modules.** Add checks for other workspace methodologies alongside ICM.
@@ -264,8 +292,10 @@ workspace-diagnostic/
 ├── SKILL.md                      Skill entry point (Agent Skills format). Short; points to the kit.
 ├── workspace-diagnostic-kit.md   The kit: all instructions the agent follows. Usable on its own.
 ├── README.md                     This file.
+├── SECURITY.md                   How to report security problems privately; protections in place.
 ├── LICENSE                       MIT license.
 ├── .gitattributes                Keeps the shell script's line endings correct.
+├── .gitignore                    Stops recordings and reports from being committed by accident.
 └── scripts/
     ├── workspace-monitor.ps1     Phase 2 monitor for Windows (PowerShell 5.1+).
     └── workspace-monitor.sh      Phase 2 monitor for macOS and Linux (POSIX sh).
@@ -298,7 +328,8 @@ Please keep changes consistent with these. They are what make the kit trustworth
 4. **One source of truth.** Instructions live in `workspace-diagnostic-kit.md`. `SKILL.md` stays a thin pointer. The monitor scripts live only in `scripts/`.
 5. **No dependencies.** The scripts use only what ships with the operating system: no installs, no network, no Python or other runtimes.
 6. **Metadata, not contents.** The kit and the monitor work from file names, sizes, and dates. Opening file contents is limited to instruction, routing, ignore, and settings files.
-7. **Honest about certainty.** Findings say whether they are measured or inferred. Thresholds are presented as rules of thumb.
+7. **Collect as little as possible.** Never open files that usually hold secrets, read settings files with values hidden, prefer folders over file names, keep personal details out of reports and recordings, and keep anything saved private to the user and easy to delete. New checks must follow "Protecting private information" in the kit.
+8. **Honest about certainty.** Findings say whether they are measured or inferred. Thresholds are presented as rules of thumb.
 
 ### Writing style for the kit
 
@@ -322,9 +353,12 @@ Please keep changes consistent with these. They are what make the kit trustworth
 1. Run for 3 to 5 minutes against a small test folder, with an output folder outside it.
 2. While it runs, add, edit, and delete a few files in the test folder, and add one marker.
 3. Check that `system.csv` and `procs.csv` have a row every interval with sensible values, `changes.csv` shows your edits, and `markers.csv` has your marker.
-4. Stop it early once with a `STOP` file and once with Ctrl+C. Check that `meta.txt` records the end time and stop reason, and `snapshot-end.tsv` exists.
-5. Check that it refuses an output folder inside the workspace and an output folder that already holds data.
-6. State your OS and version, and your shell or PowerShell version.
+4. Stop it early once with a `STOP` file and once with Ctrl+C. Check that `meta.txt` records the end time and stop reason, and that no file list (`snapshot-end.tsv` or `.snap.*`) is left behind. Repeat with the keep-file-list option and check that `snapshot-end.tsv` is kept.
+5. Run with a path depth of 2 and check that `changes.csv` contains only folder paths ending in `*`, with no file names.
+6. Check that the output folder is readable only by you: `ls -ld` on macOS and Linux (should show `drwx------`), or `icacls <folder>` on Windows (only your account and SYSTEM).
+7. Create a test file whose name starts with `=`, and check that its `changes.csv` entry starts with `'`, so a spreadsheet will not treat it as a formula.
+8. Check that it refuses an output folder inside the workspace and an output folder that already holds data.
+9. State your OS and version, and your shell or PowerShell version.
 
 ### Changing SKILL.md
 
@@ -347,9 +381,9 @@ There is no automated test suite; the kit is instructions, so testing means runn
 3. Describe what you changed, why, and how you tested it.
 4. By contributing, you agree that your contribution is licensed under the MIT license.
 
-### Reporting a safety problem
+### Reporting a security or privacy problem
 
-If you find a way the kit could lead an agent to change or delete files, expose secrets, or act without the user's approval, please open an issue marked **safety** describing the problem in general terms. These are treated as the highest priority.
+If you find a way the kit could lead an agent to change or delete files, expose secrets or personal data, or act without the user's approval, **do not open a public issue**. Report it privately as described in [SECURITY.md](SECURITY.md). These are treated as the highest priority.
 
 ## License
 

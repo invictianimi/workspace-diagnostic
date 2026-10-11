@@ -1,0 +1,9 @@
+# Never commit diagnostic output: recordings and reports contain file paths
+# and system details from the computer they were made on.
+*.csv
+*.tsv
+meta.txt
+.snap.*
+STOP
+workspace-diagnostics/
+recording-*/
